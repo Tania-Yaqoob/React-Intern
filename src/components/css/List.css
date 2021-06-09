@@ -1,0 +1,27 @@
+
+.card{
+    width: 20em;
+    background: white;
+    margin-left: 3em;
+    text-align: center;
+    padding-top: 1em;
+    margin-top: -2em;
+    height: 120%;
+    overflow: hidden;
+    margin-bottom: 0em;
+
+}
+.button2{
+    background:darkblue;
+    text-align: center;
+    color: black;
+    width: 20em;
+    
+    
+}
+.img{
+    height: 300px;
+    
+}
+
+
