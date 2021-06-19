@@ -1,75 +1,66 @@
-import React from 'react';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import { Paper } from '@material-ui/core';
 
-const StyledTableCell = withStyles((theme) => ({
-  head: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  body: {
-    fontSize: 14,
-  },
-}))(TableCell);
+import React from "react";
 
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-  },
-}))(TableRow);
 
-function createData(name, Excerpt, More) {
-  return { name, Excerpt, More };
-}
+export default class Reviews extends React.Component {
+  constructor(props) {
+    super(props)
 
-const rows = [
-  createData('Nomy', "it was good", 6.0),
-  createData('Warrier', "bad experience", 9.0),
-  createData('Elaxender', "Too good for society", 16.0),
-  createData('pupchu', "not for students", 3.7),
-  createData('enderson', "Good", 16.0),
-];
+    this.state = {
+      moviesReview: [{
+        Title: 'Star Wars: Episode IV - A New Hope of Star',
+        Year: '1977',
+        imdbID: 'tt0076759',
+        language:'en',
+        Type: 'movie',
+        overview:'Good',
+        recommendation:'recommend',
+        author:'harry',
+      },
+      {
+        Title: 'Star Wars:Episode V-The Empire Strikes back',
+        Year: '1980',
+        imdbID: 'tt0080684',
+        language:'en',
+        Type: 'movie',
+        overview:'Too Good',
+        recommendation:'recommend',
+        author:'Ali',
+      },
+      {
+        Title: 'Star Wars: Episode VI - Return of the Jedi',
+        Year: '1983',
+        imdbID: 'tt0086190',
+        language:'en',
+        Type: 'movie',
+        overview:'bad',
+        recommendation:'Not recommend',
+        author:'Umer',
+      }]
+    }
+  }
+ 
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
+  render() {
 
-export default function Basic() {
-  const classes = useStyles();
+    const { moviesReview } = this.state
+    const moviesId = this.props.match.params.id
+    const data = moviesReview.find(list => list.imdbID === moviesId)
+    
+    return (
+      <table style={{width:"100%"}}>
+        <tr>
+          <th>Author</th>
+          <th>Recommendation</th>
+          <th>Views</th>
+        </tr>
+        <tr>
+          <td>{data.author}</td>
+          <td>{data.recommendation}</td>
+          <td>{moviesReview.overview}</td>
+        </tr>
 
-  return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="customized table">
-      <TableHead>
-          <TableRow>
-            <StyledTableCell>Author</StyledTableCell>
-            <StyledTableCell align="right">Excerpt&nbsp;</StyledTableCell>
-            <StyledTableCell align="right">More&nbsp;</StyledTableCell>
-
-          </TableRow>
-      </TableHead>
-      <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.Excerpt}</StyledTableCell>
-              <StyledTableCell align="right">{row.More}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
+      </table>
+    );
+  }
 }
