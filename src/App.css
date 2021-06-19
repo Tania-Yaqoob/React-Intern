@@ -36,3 +36,37 @@
     transform: rotate(360deg);
   }
 }
+.carddeck{
+  display: 'flex';
+  flex-direction: 'row';
+  width: 30em;
+  
+}
+.card{
+  flex: 3
+}
+
+.circle {
+  border-radius: 30%;
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  background:green;
+  border: 3px solid green;
+  color: white;
+  text-align: center;
+  font: 22px Arial, sans-serif;
+  position: center;
+  margin-top: 5px;
+}
+.movie{
+  font: 32px Arial, sans-serif;
+  text-align: center;
+  padding: 10px;
+  margin-left: 530px;
+}
+.block{
+  display: inline-flex;
+  background: lightgrey;
+  width: 100%;
+}
